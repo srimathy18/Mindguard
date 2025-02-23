@@ -58,7 +58,7 @@ const HomePage = () => {
                       transition-all duration-300 ease-in-out mr-5"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ 
               scale: 1.1, 
               rotate: 2, 
