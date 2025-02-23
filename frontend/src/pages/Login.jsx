@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -12,10 +12,18 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:4000/api/auth/login", { email, password });
-      localStorage.setItem("token", res.data.token); // Store JWT token
-      navigate("/dashboard");
+      localStorage.setItem("token", res.data.token);
+      if (setToken) {
+        setToken(res.data.token);
+      }
+      // Use the redirect field from the response if available
+      if (res.data.redirect) {
+        navigate(res.data.redirect);
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
-      alert(error.response?.data?.error || "Invalid credentials");
+      alert(error.response?.data?.message || "Invalid credentials");
     }
   };
 
@@ -27,7 +35,7 @@ const Login = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-          <img src="/cross_icon.svg" alt="Close" className="w-6 h-6 absolute top-4 right-4 cursor-pointer" onClick={() => navigate("/")} />
+        <img src="/cross_icon.svg" alt="Close" className="w-6 h-6 absolute top-4 right-4 cursor-pointer" onClick={() => navigate("/")} />
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
         <input type="email" placeholder="Email" className="w-full p-3 border rounded-md mb-3" onChange={(e) => setEmail(e.target.value)} />
         <input type="password" placeholder="Password" className="w-full p-3 border rounded-md mb-3" onChange={(e) => setPassword(e.target.value)} />
