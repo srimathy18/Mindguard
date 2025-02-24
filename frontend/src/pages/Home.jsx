@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import Feature from "../components/Feature";
@@ -9,16 +10,21 @@ const Home = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
+  // Navigate based on whether a token exists
+  const handleGetStarted = () => {
+    navigate(token ? "/dashboard" : "/login");
+  };
+
   return (
     <div className="w-full">
       {/* Hero Section */}
       <div
-        className="w-full min-h-screen flex justify-end items-center text-white relative"
+        className="w-full min-h-screen flex justify-center items-center text-white relative"
         style={{
           backgroundImage: 'url("1.png")',
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
+          backgroundRepeat: "no-repeat",
         }}
       >
         {/* Overlay Image */}
@@ -33,6 +39,7 @@ const Home = () => {
           }}
         ></div>
 
+        {/* Ring Image */}
         <div className="absolute inset-0 flex items-center justify-center">
           <img
             src="ring.png"
@@ -46,15 +53,17 @@ const Home = () => {
           />
         </div>
 
+      
+
         {/* Heading Section */}
-        <div className="max-w-3xl mx-auto text-center -mt-10">
+        <div className="max-w-3xl mx-auto text-center relative z-10 -mt-10">
           <motion.h1
-            className="text-5xl font-bold leading-snug text-center"
+            className="text-5xl font-bold leading-snug"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: [0, -5, 0] }}
             transition={{ duration: 2, repeat: Infinity, repeatType: "mirror" }}
           >
-            <span className="text-[#EBEBDF] whitespace-nowrap drop-shadow-[0px_0px_20px_rgba(255,215,0,0.8)]">
+            <span className="text-[#EBEBDF] whitespace-nowrap drop-shadow-lg">
               Welcome to <span className="text-[#EBEBDF]">MindGuard 🛡️</span>
             </span>
             <br />
@@ -63,7 +72,7 @@ const Home = () => {
             </span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             className="text-l mt-4 text-gray-200 drop-shadow-md max-w-2xl mx-auto px-6"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: [0, -5, 5, 0] }}
@@ -73,20 +82,20 @@ const Home = () => {
             Psychometric Analysis, and Deep Learning to provide real-time mental health insights, 
             early risk detection, and proactive emotional support.
           </motion.p>
+           
+
+
+
+
 
           {/* Get Started Button */}
           <motion.button
-            className="mt-6 px-6 py-3 bg-white hover:bg-cyan-600 text-black font-bold rounded-full shadow-lg transition-all duration-300 ease-in-out mr-5"
+            className="mt-6 px-6 py-3 bg-white hover:bg-cyan-600 text-black font-bold rounded-full shadow-lg transition-all duration-300 ease-in-out"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ 
-              scale: 1.1, 
-              rotate: 2, 
-              y: -3, 
-              boxShadow: "0px 5px 15px rgba(59, 130, 246, 0.6)" 
-            }}
-            onClick={() => navigate(token ? "/dashboard" : "/login")}
+            whileHover={{ scale: 1.1, rotate: 2, y: -3, boxShadow: "0px 5px 15px rgba(59,130,246,0.6)" }}
+            onClick={handleGetStarted}
           >
             Get Started
           </motion.button>

@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Signup from "./pages/Signup.jsx";
-import UserDashboard from "./pages/UserDashboard.jsx";
-import Navbar from "./components/Navbar.jsx";
-import About from "./pages/About.jsx";
-import ChatPage from "./pages/ChartPage.jsx";
-
+import { BrowserRouter as Router } from "react-router-dom";
+import AppContent from "./AppContent";
 
 const App = () => {
+  // Initialize token from localStorage for persistent login state
   const [token, setToken] = useState(localStorage.getItem("token"));
 
+  // Helper to update token both in state and localStorage
   const setTokenAndStore = (token) => {
     if (token) {
       localStorage.setItem("token", token);
@@ -23,15 +18,7 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={token ? <Navigate to="/dashboard" /> : <Login setToken={setTokenAndStore} />} />
-        <Route path="/signup" element={token ? <Navigate to="/dashboard" /> : <Signup />} />
-        <Route path="/dashboard" element={token ? <UserDashboard /> : <Navigate to="/login" />} />
-        <Route path="/chat" element={<ChatPage />} />
-      </Routes>
+      <AppContent token={token} setTokenAndStore={setTokenAndStore} />
     </Router>
   );
 };
