@@ -1,10 +1,10 @@
-// src/pages/Home.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import Feature from "../components/Feature";
 import { useNavigate } from "react-router-dom";
 import UserSteps from "../components/Steps";
 import Footer from "../components/Footer";
+import About from "./About";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -18,17 +18,20 @@ const Home = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div
-        className="w-full min-h-screen flex justify-center items-center text-white relative"
-        style={{
-          backgroundImage: 'url("1.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+      <div className="relative w-full min-h-screen flex justify-center items-center text-white">
+        {/* Background Image */}
+         <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url("1.png")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div> 
+
         {/* Overlay Image */}
-        <div
+       { <div
           className="absolute inset-0"
           style={{
             backgroundImage: 'url("light.jpg")',
@@ -37,23 +40,7 @@ const Home = () => {
             backgroundRepeat: "no-repeat",
             opacity: 0.5,
           }}
-        ></div>
-
-        {/* Ring Image */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <img
-            src="ring.png"
-            alt="Ring Overlay"
-            style={{
-              width: "450%",
-              height: "150%",
-              filter: "grayscale(0.5) brightness(0.6)",
-              transform: "translateX(4%)",
-            }}
-          />
-        </div>
-
-      
+        ></div>} 
 
         {/* Heading Section */}
         <div className="max-w-3xl mx-auto text-center relative z-10 -mt-10">
@@ -82,11 +69,6 @@ const Home = () => {
             Psychometric Analysis, and Deep Learning to provide real-time mental health insights, 
             early risk detection, and proactive emotional support.
           </motion.p>
-           
-
-
-
-
 
           {/* Get Started Button */}
           <motion.button
@@ -100,9 +82,26 @@ const Home = () => {
             Get Started
           </motion.button>
         </div>
+
+        <svg className="absolute bottom-0 left-0 w-full h-24" viewBox="0 0 1440 320" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style={{ stopColor: "#1A0128", stopOpacity: 1 }} />
+      <stop offset="100%" style={{ stopColor: "#E6E6FA", stopOpacity: 1 }} />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#gradient)" // Use the defined gradient here
+    fillOpacity="1"
+    d="M0,192L60,170.7C120,149,240,107,360,117.3C480,128,600,192,720,208C840,224,960,192,1080,165.3C1200,139,1320,117,1380,106.7L1440,96V320H0Z"
+  ></path>
+</svg>
+
+
       </div>
-      
+
       <Feature />
+      <About/>
       <UserSteps />
       <Footer />
     </div>

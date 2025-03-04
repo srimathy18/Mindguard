@@ -6,7 +6,7 @@ const App = () => {
   // Initialize token from localStorage for persistent login state
   const [token, setToken] = useState(localStorage.getItem("token"));
 
-  // Helper to update token both in state and localStorage
+  // Help to update token both in state and localStorage
   const setTokenAndStore = (token) => {
     if (token) {
       localStorage.setItem("token", token);
