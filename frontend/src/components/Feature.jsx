@@ -1,91 +1,104 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { FaBrain, FaChartLine, FaRobot, FaSearch, FaComments, FaCalendarAlt } from "react-icons/fa";
 
 const featuresData = [
-  { title: "🧠 AI Mental Health Assessment", description: "Uses AI-powered deep learning to analyze user inputs and detect early signs of mental health conditions." },
-  { title: "🔮 Predictive Risk Forecasting", description: "Predicts future emotional states and mental health risks based on past user data and trends." },
-  { title: "📊 Real-Time Sentiment Tracking", description: "Monitors emotional changes over time with live mood tracking and graphical analysis." },
-  { title: "🤖 AI Chatbot Support", description: "Interactive AI chatbot provides emotional support, stress management tips, and mental well-being guidance." },
-  { title: "🔍 Explainable AI for Transparency", description: "Shows key words and patterns influencing AI predictions, ensuring transparency in mental health assessments." },
-  { title: "📅 Personalized Daily Insights", description: "Receive daily mental health insights and mood-boosting tips personalized for you." },
+  { title: "AI Mental Health Assessment", description: "Uses AI-powered deep learning to analyze user inputs and detect early signs of mental health conditions.", icon: <FaBrain />, color: "bg-blue-400" },
+  { title: "Predictive Risk Forecasting", description: "Predicts future emotional states and mental health risks based on past user data and trends.", icon: <FaChartLine />, color: "bg-pink-400" },
+  { title: "Real-Time Sentiment Tracking", description: "Monitors emotional changes over time with live mood tracking and graphical analysis.", icon: <FaComments />, color: "bg-orange-400" },
+  { title: "AI Chatbot Support", description: "Interactive AI chatbot provides emotional support, stress management tips, and mental well-being guidance.", icon: <FaRobot />, color: "bg-gray-700" },
+  { title: "Explainable AI for Transparency", description: "Shows key words and patterns influencing AI predictions, ensuring transparency in mental health assessments.", icon: <FaSearch />, color: "bg-purple-400" },
+  { title: "Personalized Daily Insights", description: "Receive daily mental health insights and mood-boosting tips personalized for you.", icon: <FaCalendarAlt />, color: "bg-teal-400" },
 ];
 
 const Feature = () => {
   return (
-    <div className="relative bg-gradient-to-r from-[#1A0128] to-[#E6E6FA] text-white py-24 overflow-hidden">
-      {/* Top Wave with Smooth Gradient */}
-      <svg
-        className="absolute top-0 left-0 w-full h-24 -mt-1"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path
-          fill="url(#smoothGradient)"
-          fillOpacity="1"
-          d="M0,224L60,213.3C120,203,240,181,360,186.7C480,192,600,224,720,224C840,224,960,192,1080,176C1200,160,1320,160,1380,165.3L1440,170V0H0Z"
-        ></path>
-        <defs>
-          <linearGradient id="smoothGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style={{ stopColor: "#1A0128", stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: "#E6E6FA", stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-      </svg>
+    <div className="relative bg-gradient-to-b from-blue-500 to-pink-500 py-20 -mt-20">
+      {/* Wave Effect at the Top */}
+      <div className="absolute top-0 left-0 w-full">
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+          <path
+            fill="white"
+            fillOpacity="1"
+            d="M0,192L48,186.7C96,181,192,171,288,176C384,181,480,203,576,197.3C672,192,768,160,864,165.3C960,171,1056,213,1152,224C1248,235,1344,213,1392,202.7L1440,192V0H1392C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0H0Z"
+          ></path>
+        </svg>
+      </div>
+       {/* Moving Stars & Starlink Effect */}
+<div className="absolute inset-0 overflow-hidden">
+  {/* Small Floating Stars */}
+  {[...Array(40)].map((_, i) => (
+    <motion.div
+      key={`star-${i}`}
+      className="absolute w-1 h-1 bg-white rounded-full"
+      style={{
+        top: `${Math.random() * 100}vh`,
+        left: `${Math.random() * 100}vw`,
+      }}
+      animate={{
+        y: ['0vh', '100vh'],
+        opacity: [1, 0],
+      }}
+      transition={{
+        duration: Math.random() * 5 + 5,
+        repeat: Infinity,
+        ease: 'linear',
+        delay: Math.random() * 5,
+      }}
+    />
+  ))}
 
-      {/* Title & Description */}
-      <motion.div
-        className="container mx-auto text-center px-4 relative z-10"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <motion.h1
-          className="text-4xl font-bold mb-6 text-black"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        >
-          Features
-        </motion.h1>
-        <p className="text-lg mb-10 text-gray-900">AI-driven insights to support and enhance mental well-being.</p>
+  {/* Starlink Effect (Fast-moving streaks) */}
+  {[...Array(10)].map((_, i) => (
+    <motion.div
+      key={`starlink-${i}`}
+      className="absolute w-0.5 h-6 bg-white/80 rounded-full shadow-lg"
+      style={{
+        top: `${Math.random() * 100}vh`,
+        left: `${Math.random() * 100}vw`,
+        rotate: `${Math.random() * 360}deg`,
+      }}
+      animate={{
+        y: ['-10vh', '110vh'],
+        opacity: [0, 1, 0],
+      }}
+      transition={{
+        duration: Math.random() * 3 + 3, // Faster movement
+        repeat: Infinity,
+        ease: 'linear',
+        delay: Math.random() * 5,
+      }}
+    />
+  ))}
+</div>
 
-        {/* Feature Cards with Glow Effect */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {featuresData.map((feature, index) => (
-            <motion.div
-              key={index}
-              className="bg-white p-6 rounded-xl shadow-lg text-center text-pink-400  flex flex-col items-center transition-all duration-300 hover:shadow-2xl"
-              whileHover={{
-                scale: 1.05,
-                backgroundColor: "#E6E6FA",
-                boxShadow: "0px 0px 20px 5px rgba(138, 43, 226, 0.5)", 
-              }}
-              transition={{ type: "spring", stiffness: 200, damping: 10 }}
-            >
-              <motion.h2
-                className="text-lg font-semibold transition-all duration-300 hover:text-purple-600"
-                whileHover={{ scale: 1.1 }}
-              >
-                {feature.title}
-              </motion.h2>
-              <p className="text-gray-600 mt-2 text-sm">{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+      {/* Section Title */}
+      <div className="text-center text-white relative z-10 mt-30">
+        <h2 className="text-4xl font-bold uppercase tracking-wide">Our Features</h2>
+        <p className="mt-4 text-gray-200 text-lg">Discover AI-powered mental health monitoring and insights.</p>
+        <div className="w-20 h-1 bg-white mx-auto mt-4"></div>
+      </div>
 
-      {/* Bottom Wave */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-24"
-        viewBox="0 0 1440 320"
-        preserveAspectRatio="none"
-      >
-        <path
-          fill="#fff"
-          fillOpacity="1"
-          d="M0,192L60,170.7C120,149,240,107,360,117.3C480,128,600,192,720,208C840,224,960,192,1080,165.3C1200,139,1320,117,1380,106.7L1440,96V320H0Z"
-        ></path>
-      </svg>
+      {/* Features Grid */}
+      <div className="container mx-auto mt-12 px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {featuresData.map((feature, index) => (
+          <motion.div
+            key={index}
+            className={`relative h-64 rounded-lg overflow-hidden shadow-lg ${feature.color}`}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Semi-Transparent Overlay */}
+            <div className="absolute inset-0 bg-black opacity-40"></div>
+
+            {/* Icon and Text */}
+            <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-6">
+              <div className="text-5xl">{feature.icon}</div>
+              <h3 className="text-2xl font-semibold mt-4">{feature.title}</h3>
+              <p className="mt-2 text-gray-100">{feature.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
