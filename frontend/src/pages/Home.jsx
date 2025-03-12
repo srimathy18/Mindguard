@@ -5,6 +5,8 @@ import About from '../pages/About.jsx';
 import Feature from '../components/Feature.jsx';
 import UserSteps from '../components/Steps';
 import Footer from '../components/Footer.jsx';
+import { Brain } from 'lucide-react';
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const Home = () => {
     delay: Math.random() * 5,
   })), []);
 
-  const starlinks = useMemo(() => [...Array(10)].map((_, i) => ({
+const starlinks = useMemo(() => [...Array(10)].map((_, i) => ({
     id: `starlink-${i}`,
     top: `${Math.random() * 100}vh`,
     left: `${Math.random() * 100}vw`,
@@ -31,75 +33,93 @@ const Home = () => {
     delay: Math.random() * 5,
   })), []);
 
-  return (
-    <div className="w-full overflow-x-hidden">
-      {/* Gradient Background Wrapper */}
-      <div className="relative w-full flex flex-col items-center justify-center text-white pb-40 min-h-screen">
-        
-        {/* Animated Gradient Background */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-blue-500 to-pink-500"
-          animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-          transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
-        />
+const glowingParticles = useMemo(() => [...Array(20)].map((_, i) => ({
+    id: `glow-${i}`,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    x: Math.random() * 100 - 50,
+    y: Math.random() * 100 - 50,
+    duration: 4 + Math.random() * 2
+})), []);
 
-        {/* Floating Stars */}
-        <div className="absolute inset-0 overflow-hidden">
-          {stars.map((star) => (
-            <motion.div
-              key={star.id}
-              className="absolute w-1 h-1 bg-white rounded-full"
-              style={{ top: star.top, left: star.left }}
-              animate={{ y: ['0vh', '100vh'], opacity: [1, 0] }}
-              transition={{ duration: star.duration, repeat: Infinity, ease: 'linear', delay: star.delay }}
-            />
-          ))}
-          
-          {/* Starlink Effect */}
-          {starlinks.map((star) => (
-            <motion.div
-              key={star.id}
-              className="absolute w-0.5 h-6 bg-white/80 rounded-full shadow-lg"
-              style={{ top: star.top, left: star.left, rotate: star.rotate }}
-              animate={{ y: ['-10vh', '110vh'], opacity: [0, 1, 0] }}
-              transition={{ duration: star.duration, repeat: Infinity, ease: 'linear', delay: star.delay }}
-            />
-          ))}
-        </div>
+return (
+  <div className="w-full overflow-x-hidden">
+    <div className="relative w-full flex flex-col items-start justify-center text-white pb-40 min-h-screen pl-10">
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-blue-500 to-pink-500"
+        animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
+        transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
+      />
 
-        {/* Animated Text */}
+      {/* Stars and Starlinks */}
+      <div className="absolute inset-0 overflow-hidden">
+        {stars.map((star) => (
+          <motion.div
+            key={star.id}
+            className="absolute w-1 h-1 bg-white rounded-full"
+            style={{ top: star.top, left: star.left }}
+            animate={{ y: ['0vh', '100vh'], opacity: [1, 0] }}
+            transition={{ duration: star.duration, repeat: Infinity, ease: 'linear', delay: star.delay }}
+          />
+        ))}
+
+        {starlinks.map((star) => (
+          <motion.div
+            key={star.id}
+            className="absolute w-0.5 h-6 bg-white/80 rounded-full shadow-lg"
+            style={{ top: star.top, left: star.left, rotate: star.rotate }}
+            animate={{ y: ['-10vh', '110vh'], opacity: [0, 1, 0] }}
+            transition={{ duration: star.duration, repeat: Infinity, ease: 'linear', delay: star.delay }}
+          />
+        ))}
+
+        {/* Glowing Particles */}
+        {glowingParticles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute w-2 h-2 bg-blue-300 rounded-full shadow-lg"
+            animate={{
+              x: [0, particle.x],
+              y: [0, particle.y],
+              boxShadow: [
+                "0px 0px 10px rgba(59,130,246,0.9)",
+                "0px 0px 15px rgba(59,130,246,0.7)",
+                "0px 0px 20px rgba(59,130,246,0.5)",
+              ],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              top: particle.top,
+              left: particle.left,
+            }}
+          />
+        ))}
+      </div>
+
         <motion.div 
-          className="relative z-10 text-center p-6 mt-32"  
+          className="relative z-10 text-left p-6 mt-28 max-w-lg"
           animate={{ y: [-10, 0, -10] }}
           transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
         >
-          <motion.h2
-            className="text-4xl md:text-6xl font-bold flex items-center justify-center gap-2"
+          <motion.h3
+            className="text-4xl md:text-6xl font-bold mt-0 whitespace-nowrap"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: [0, -5, 0] }}
             transition={{ duration: 2, repeat: Infinity, repeatType: "mirror" }}
           >
-            Welcome to <span className="text-white/60">MindGuard</span>
-            <img src="/logo.png" alt="MindGuard Logo" className="w-12 h-12 md:w-16 md:h-16" />
-          </motion.h2>
+            Welcome to <span className="text-white/60">MindGuard</span> 
+            <img src="/logo.png" alt="MindGuard Logo" className="w-12 h-12 md:w-16 md:h-16 inline" />
+          </motion.h3>
 
-          <motion.p
-            className="mt-4 text-lg md:text-xl max-w-2xl mx-auto"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: [0, -5, 5, 0] }}
-            transition={{ duration: 3, repeat: Infinity, repeatType: "mirror" }}
-          >
-            Neuro-Linguistic Psychometric Adversarial Prognosis
-          </motion.p>
+          <motion.p className="mt-4 text-lg md:text-xl">Neuro-Linguistic Psychometric Adversarial Prognosis</motion.p>
 
-          <motion.p
-            className="mt-2 text-md md:text-lg max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: [0, -3, 3, 0] }}
-            transition={{ duration: 4, repeat: Infinity, repeatType: "mirror" }}
-          >
-            Empowering minds with cutting-edge AI. MindGuard combines Neuro-Linguistic Processing, 
-            Psychometric Analysis, and Deep Learning to provide real-time mental health insights, 
+          <motion.p className="mt-2 text-md md:text-lg">
+            Empowering minds with cutting-edge AI. MindGuard combines Neuro-Linguistic Processing,
+            Psychometric Analysis, and Deep Learning to provide real-time mental health insights,
             early risk detection, and proactive emotional support.
           </motion.p>
 
@@ -115,8 +135,22 @@ const Home = () => {
           </motion.button>
         </motion.div>
 
-        {/* Box Image */}
-        <div className="mt-10 bg-white/10 backdrop-blur-lg border border-white/20 p-3 rounded-2xl shadow-2xl w-[700px] max-w-full flex items-center justify-center">
+        <div className="flex w-full justify-end pr-10 -mt-100">
+          <div className="relative w-72 h-72 md:w-96 md:h-96">
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-3xl"></div>
+                <Brain size={200} className="text-blue-200" strokeWidth={1} />
+              </div>
+            </motion.div>
+          </div>
+          </div>
+ 
+        <div className="mt-10 ml-60 bg-white/10 backdrop-blur-lg border border-white/20 p-3 rounded-2xl shadow-2xl w-[700px] max-w-full flex items-center justify-start">
           <img 
             src="/light.jpg" 
             alt="MindGuard" 
@@ -124,7 +158,6 @@ const Home = () => {
           />
         </div>
 
-        {/* Wave Effect (Placed after Image Box) */}
         <div className="absolute bottom-[-5px] left-0 w-full">
           <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
             <path
@@ -136,7 +169,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Sections (After Background Ends) */}
       <About />
       <Feature />
       <UserSteps />
