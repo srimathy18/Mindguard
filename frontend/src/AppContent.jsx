@@ -5,7 +5,8 @@ import About from "./pages/About.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
-import ChartPage from "./pages/ChartPage.jsx";
+
+import ForgotPassword from "./pages/ForgotPassword.jsx"; 
 
 const AppContent = ({ token, setTokenAndStore }) => {
   return (
@@ -26,7 +27,13 @@ const AppContent = ({ token, setTokenAndStore }) => {
         path="/dashboard"
         element={token ? <UserDashboard /> : <Navigate to="/login" />}
       />
-      <Route path="/chat" element={<ChartPage />} />
+     
+      <Route
+        path="/forgot-password"
+        element={<ForgotPassword />} 
+      />
+      {/* Catch-all route for nonexistent paths */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

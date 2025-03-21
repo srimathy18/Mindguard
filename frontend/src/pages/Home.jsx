@@ -6,7 +6,8 @@ import Feature from '../components/Feature.jsx';
 import UserSteps from '../components/Steps';
 import Footer from '../components/Footer.jsx';
 import { Brain } from 'lucide-react';
-
+import OrbitingSymbols from '../components/OrbitingSymbols.jsx';
+import VideoSequence from '../components/VideoSequence.jsx';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -106,14 +107,15 @@ return (
           transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
         >
           <motion.h3
-            className="text-4xl md:text-6xl font-bold mt-0 whitespace-nowrap"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: [0, -5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, repeatType: "mirror" }}
-          >
-            Welcome to <span className="text-white/60">MindGuard</span> 
-            <img src="/logo.png" alt="MindGuard Logo" className="w-12 h-12 md:w-16 md:h-16 inline" />
-          </motion.h3>
+  className="text-4xl md:text-6xl font-bold mt-0 whitespace-nowrap text-white"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: [0, -5, 0] }}
+  transition={{ duration: 2, repeat: Infinity, repeatType: "mirror" }}
+>
+  Welcome to <span className="text-white">MindGuard</span>
+  <img src="/logo.png" alt="MindGuard Logo" className="w-12 h-12 md:w-16 md:h-16 inline" />
+</motion.h3>
+
 
           <motion.p className="mt-4 text-lg md:text-xl">Neuro-Linguistic Psychometric Adversarial Prognosis</motion.p>
 
@@ -123,40 +125,29 @@ return (
             early risk detection, and proactive emotional support.
           </motion.p>
 
-          <motion.button
-            className="mt-6 px-6 py-3 bg-white text-black font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ scale: 1.1, rotate: 2, y: -3, boxShadow: "0px 5px 15px rgba(59,130,246,0.6)" }}
-            onClick={handleGetStarted}
-          >
-            Get Started
-          </motion.button>
+         <motion.button
+  className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold rounded-full shadow-lg hover:from-pink-500 hover:to-blue-500 transition-all duration-300 relative overflow-hidden"
+  initial={{ scale: 0 }}
+  animate={{ scale: 1 }}
+  transition={{ duration: 0.5, delay: 0.2 }}
+  whileHover={{
+    scale: 1.15,
+    rotate: 2,
+    y: -3,
+    boxShadow:"#ffff"
+  }}
+  onClick={handleGetStarted}
+>
+  <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-600 opacity-0 hover:opacity-30 transition-all duration-500 rounded-full"></span>
+  <span className="relative z-10">Get Started</span>
+</motion.button>
+
         </motion.div>
 
-        <div className="flex w-full justify-end pr-10 -mt-100">
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
-            <motion.div
-              className="absolute inset-0 flex items-center justify-center"
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="relative">
-                <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-3xl"></div>
-                <Brain size={200} className="text-blue-200" strokeWidth={1} />
-              </div>
-            </motion.div>
-          </div>
-          </div>
+      <OrbitingSymbols/>
  
-        <div className="mt-10 ml-60 bg-white/10 backdrop-blur-lg border border-white/20 p-3 rounded-2xl shadow-2xl w-[700px] max-w-full flex items-center justify-start">
-          <img 
-            src="/light.jpg" 
-            alt="MindGuard" 
-            className="max-h-[700px] md:max-h-[500px] object-contain rounded-2xl opacity-75 brightness-90 contrast-95"
-          />
-        </div>
+    
+<VideoSequence/>
 
         <div className="absolute bottom-[-5px] left-0 w-full">
           <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">

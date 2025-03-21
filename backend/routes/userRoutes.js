@@ -1,6 +1,6 @@
 import express from 'express';
 import { registerUser, loginUser, getDashboard } from '../controllers/usercontroller.js';
-import userAuth from '../middlewares/auth.js'; // Ensure your middleware correctly verifies the JWT
+import userAuth from '../middlewares/auth.js'; 
 
 const userRouter = express.Router();
 
@@ -10,6 +10,9 @@ userRouter.post('/signup', registerUser);
 
 // Login: /api/auth/login
 userRouter.post('/login', loginUser);
+
+//forgetpassword:  /forgot-password
+router.post("/forgot-password", forgotPassword);
 
 // Dashboard: /api/auth/dashboard
 userRouter.get('/dashboard', userAuth, getDashboard);
