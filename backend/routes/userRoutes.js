@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, getDashboard } from '../controllers/usercontroller.js';
+import { registerUser, loginUser, getDashboard ,forgotPassword} from '../controllers/usercontroller.js';
 import userAuth from '../middlewares/auth.js'; 
 
 const userRouter = express.Router();
@@ -12,7 +12,7 @@ userRouter.post('/signup', registerUser);
 userRouter.post('/login', loginUser);
 
 //forgetpassword:  /forgot-password
-router.post("/forgot-password", forgotPassword);
+userRouter.post("/forgot-password", forgotPassword);
 
 // Dashboard: /api/auth/dashboard
 userRouter.get('/dashboard', userAuth, getDashboard);

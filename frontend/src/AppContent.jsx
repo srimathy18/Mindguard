@@ -5,8 +5,7 @@ import About from "./pages/About.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import UserDashboard from "./pages/UserDashboard.jsx";
-
-import ForgotPassword from "./pages/ForgotPassword.jsx"; 
+import ForgotPassword from "./pages/ForgotPassword.jsx";
 
 const AppContent = ({ token, setTokenAndStore }) => {
   return (
@@ -23,15 +22,18 @@ const AppContent = ({ token, setTokenAndStore }) => {
         path="/signup"
         element={token ? <Navigate to="/dashboard" /> : <Signup />}
       />
+      
+      {/* Use /dashboard/* to allow sub-routes under /dashboard */}
       <Route
-        path="/dashboard"
+        path="/dashboard/*"
         element={token ? <UserDashboard /> : <Navigate to="/login" />}
       />
-     
+
       <Route
         path="/forgot-password"
-        element={<ForgotPassword />} 
+        element={<ForgotPassword />}
       />
+
       {/* Catch-all route for nonexistent paths */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

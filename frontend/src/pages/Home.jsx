@@ -5,7 +5,6 @@ import About from '../pages/About.jsx';
 import Feature from '../components/Feature.jsx';
 import UserSteps from '../components/Steps';
 import Footer from '../components/Footer.jsx';
-import { Brain } from 'lucide-react';
 import OrbitingSymbols from '../components/OrbitingSymbols.jsx';
 import VideoSequence from '../components/VideoSequence.jsx';
 

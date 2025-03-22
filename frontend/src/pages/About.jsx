@@ -2,14 +2,22 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const About = () => {
-  const starShapes = [
-    "M10 0 L13 7 L20 7 L14 11 L17 18 L10 14 L3 18 L6 11 L0 7 L7 7 Z", // Star shape
-    "M12 0 L14 8 L20 8 L15 12 L17 20 L12 15 L7 20 L9 12 L4 8 L10 8 Z", // Star shape
+  const shapes = [
+    // Star
+    "M10 0 L13 7 L20 7 L14 11 L17 18 L10 14 L3 18 L6 11 L0 7 L7 7 Z",
+    // Leaf
+    "M10 0 C12 5, 20 5, 10 20 C0 5, 8 5, 10 0 Z",
+    // Cloud
+    "M6 10 A4 4 0 0 1 10 6 A4 4 0 0 1 14 10 A4 4 0 0 1 18 14 H4 A4 4 0 0 1 6 10 Z",
+    // Burst
+    "M10 0 L13 7 L20 7 L14 11 L17 18 L10 14 L3 18 L6 11 L0 7 L7 7 Z",
+    // Infinity
+    "M5 10 C5 5, 10 5, 10 10 C10 15, 15 15, 15 10 C15 5, 10 5, 10 10",
   ];
 
-  const stars = [...Array(30)].map((_, i) => ({
-    id: `star-${i}`,
-    path: starShapes[i % starShapes.length],
+  const items = [...Array(30)].map((_, i) => ({
+    id: `shape-${i}`,
+    path: shapes[i % shapes.length],
     left: `${Math.random() * 100}vw`,
     size: Math.random() * 20 + 10,
     duration: Math.random() * 10 + 5,
@@ -17,31 +25,31 @@ const About = () => {
   }));
 
   return (
-    <div className="relative min-h-screen  overflow-hidden">
-      {/* Star Animation */}
-      {stars.map((star) => (
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Shape Animation */}
+      {items.map((item) => (
         <motion.svg
-          key={star.id}
+          key={item.id}
           className="absolute fill-current text-amber-300 opacity-80"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           style={{
-            left: star.left,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
+            left: item.left,
+            width: `${item.size}px`,
+            height: `${item.size}px`,
           }}
           animate={{
             y: ["-10vh", "110vh"],
             opacity: [1, 0.5, 1],
           }}
           transition={{
-            duration: star.duration,
+            duration: item.duration,
             repeat: Infinity,
-            delay: star.delay,
+            delay: item.delay,
             ease: "easeInOut",
           }}
         >
-          <path d={star.path} />
+          <path d={item.path} />
         </motion.svg>
       ))}
 

@@ -1,7 +1,7 @@
 import userModel from "../models/usermodel.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer"; // Import nodemailer for forgot password functionality
+import nodemailer from "nodemailer"; 
 
 // Register User
 const registerUser = async (req, res) => {
