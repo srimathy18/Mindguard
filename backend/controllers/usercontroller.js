@@ -136,4 +136,36 @@ const forgotPassword = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser, getDashboard, forgotPassword };
+// Get User Profile
+const getUserProfile = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params.id).select("-password"); // Exclude password from response
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Update User Profile
+const updateUserProfile = async (req, res) => {
+  try {
+    const updatedUser = await userModel.findByIdAndUpdate(req.params.id, req.body, {
+      new: true, // Return the updated user
+    }).select("-password"); // Exclude password from response
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export { registerUser, loginUser, getDashboard, forgotPassword , getUserProfile, updateUserProfile};

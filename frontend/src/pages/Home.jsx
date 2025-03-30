@@ -42,11 +42,12 @@ const glowingParticles = useMemo(() => [...Array(20)].map((_, i) => ({
     duration: 4 + Math.random() * 2
 })), []);
 
+
 return (
   <div className="w-full overflow-x-hidden">
-    <div className="relative w-full flex flex-col items-start justify-center text-white pb-40 min-h-screen pl-10">
+    <div className="relative w-full flex flex-col items-start justify-center text-gray-800 pb-40 min-h-screen pl-10">
       <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-blue-500 to-pink-500"
+        className="absolute inset-0 bg-gradient-to-b from-[#297194] via-[#D1E1F7] to-[#E7F2F7]"
         animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
         transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
       />
@@ -66,8 +67,9 @@ return (
         {starlinks.map((star) => (
           <motion.div
             key={star.id}
-            className="absolute w-0.5 h-6 bg-white/80 rounded-full shadow-lg"
-            style={{ top: star.top, left: star.left, rotate: star.rotate }}
+            className="absolute w-0.5 h-6  rounded-full shadow-lg"
+            style={{ top: star.top, left: star.left, rotate: star.rotate ,backgroundColor: '#E0F7FF'}}
+          
             animate={{ y: ['-10vh', '110vh'], opacity: [0, 1, 0] }}
             transition={{ duration: star.duration, repeat: Infinity, ease: 'linear', delay: star.delay }}
           />
@@ -75,29 +77,30 @@ return (
 
         {/* Glowing Particles */}
         {glowingParticles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute w-2 h-2 bg-blue-300 rounded-full shadow-lg"
-            animate={{
-              x: [0, particle.x],
-              y: [0, particle.y],
-              boxShadow: [
-                "0px 0px 10px rgba(59,130,246,0.9)",
-                "0px 0px 15px rgba(59,130,246,0.7)",
-                "0px 0px 20px rgba(59,130,246,0.5)",
-              ],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              top: particle.top,
-              left: particle.left,
-            }}
-          />
-        ))}
+  <motion.div
+    key={particle.id}
+    className="absolute w-2 h-2 bg-blue-800 rounded-full shadow-lg"
+    animate={{
+      x: [particle.x, particle.x * -1, 0], 
+      y: [particle.y, particle.y * -1, 0],
+      boxShadow: [
+        "0px 0px 10px rgba(41,113,148,0.9)",
+        "0px 0px 15px rgba(41,113,148,0.7)",
+        "0px 0px 20px rgba(41,113,148,0.5)",
+      ],
+    }}
+    transition={{
+      duration: particle.duration,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    style={{
+      top: particle.top,
+      left: particle.left,
+    }}
+  />
+))}
+
       </div>
 
         <motion.div 
@@ -106,12 +109,12 @@ return (
           transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
         >
           <motion.h3
-  className="text-4xl md:text-6xl font-bold mt-0 whitespace-nowrap text-white"
+  className="text-4xl md:text-6xl font-bold mt-0 whitespace-nowrap text-gray-900"
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: [0, -5, 0] }}
   transition={{ duration: 2, repeat: Infinity, repeatType: "mirror" }}
 >
-  Welcome to <span className="text-white">MindGuard</span>
+  Welcome to <span className="text-gray-900">MindGuard</span>
   <img src="/logo.png" alt="MindGuard Logo" className="w-12 h-12 md:w-16 md:h-16 inline" />
 </motion.h3>
 
@@ -125,7 +128,7 @@ return (
           </motion.p>
 
          <motion.button
-  className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white font-semibold rounded-full shadow-lg hover:from-pink-500 hover:to-blue-500 transition-all duration-300 relative overflow-hidden"
+  className="mt-6 px-8 py-3 bg-gradient-to-r from-[#297194] via-[#D1E1F7] to-[#E7F2F7] text-gray-900 font-semibold rounded-full shadow-lg hover:from-[#E7F2F7] hover:to-[#297194] transition-all duration-300 relative overflow-hidden"
   initial={{ scale: 0 }}
   animate={{ scale: 1 }}
   transition={{ duration: 0.5, delay: 0.2 }}
@@ -137,7 +140,7 @@ return (
   }}
   onClick={handleGetStarted}
 >
-  <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-600 opacity-0 hover:opacity-30 transition-all duration-500 rounded-full"></span>
+  <span className="absolute inset-0 bg-gradient-to-r from-[#297194] to-[#D1E1F7] opacity-0 hover:opacity-30 transition-all duration-500 rounded-full"></span>
   <span className="relative z-10">Get Started</span>
 </motion.button>
 

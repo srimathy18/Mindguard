@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Menu,
   UserCheck,
@@ -12,7 +13,6 @@ import {
   Users,
   LogOut,
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -23,16 +23,14 @@ const Sidebar = () => {
   };
 
   const handleLogout = () => {
-    // Clear the user's session
     localStorage.removeItem("authToken");
-    navigate("/login"); // Redirect to the login page
+    navigate("/login");
   };
 
   const colors = {
     dark: {
-      background: "#607D8B",
-      
-      hover: "#455A64",
+      background: "#2D3748",
+      hover: "#4A5568",
       text: "#E2E8F0",
     },
   };
@@ -51,15 +49,17 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`h-screen flex flex-col transition-all duration-300 ${
+      className={`transition-all duration-300 h-screen ${
         isSidebarOpen ? "w-64" : "w-20"
-      }`}
-      style={{ backgroundColor: colors.dark.background, color: colors.dark.text }}
+      } bg-gray-800 text-gray-100 flex flex-col`}
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4">
-        <button onClick={toggleSidebar} className="p-2 rounded-md hover:bg-opacity-70">
-          <Menu size={24} style={{ color: colors.dark.text }} />
+        <button
+          onClick={toggleSidebar}
+          className="p-2 rounded-md hover:bg-gray-700 focus:outline-none"
+        >
+          <Menu size={24} />
         </button>
       </div>
 
@@ -69,11 +69,10 @@ const Sidebar = () => {
           <Link
             key={item.path}
             to={item.path}
-            className="flex items-center p-2 rounded-md hover:bg-opacity-50"
-            style={{ backgroundColor: colors.dark.hover }}
+            className="flex items-center p-2 rounded-md hover:bg-gray-700"
           >
             <span>{item.icon}</span>
-            {isSidebarOpen && <span className="ml-2">{item.title}</span>}
+            {isSidebarOpen && <span className="ml-4">{item.title}</span>}
           </Link>
         ))}
       </nav>
@@ -82,11 +81,10 @@ const Sidebar = () => {
       <div className="p-4">
         <button
           onClick={handleLogout}
-          className="flex items-center p-2 rounded-md hover:bg-opacity-50 w-full"
-          style={{ backgroundColor: colors.dark.hover }}
+          className="flex items-center w-full p-2 rounded-md hover:bg-gray-700"
         >
           <LogOut size={20} />
-          {isSidebarOpen && <span className="ml-2">Logout</span>}
+          {isSidebarOpen && <span className="ml-4">Logout</span>}
         </button>
       </div>
     </div>

@@ -12,7 +12,7 @@ const featuresData = [
 
 const Feature = () => {
   return (
-    <div className="relative bg-gradient-to-b from-blue-500 to-pink-500 py-20 -mt-20">
+    <div className="relative bg-gradient-to-b from-[#297194] via-[#D1E1F7] to-[#E7F2F7] py-20 -mt-20">
       {/* Wave Effect at the Top */}
       <div className="absolute top-0 left-0 w-full">
         <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">

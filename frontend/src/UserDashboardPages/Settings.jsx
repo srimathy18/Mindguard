@@ -1,123 +1,64 @@
-import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
-import { ThemeContext } from "../UserDashboardPages/Themes/ThemeProvider";
-
-// Styled components
-const PageWrapper = styled.div`
-  background-color: ${(props) => props.theme.background};
-  min-height: 100vh;
-  color: ${(props) => props.theme.text};
-  padding: 2rem;
-`;
-
-const Header = styled.header`
-  text-align: center;
-  margin-bottom: 2rem;
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-`;
-
-const SubTitle = styled.p`
-  font-size: 1.25rem;
-`;
-
-const SectionContainer = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-`;
-
-const Card = styled.div`
-  background: ${(props) => props.theme.cardBackground};
-  border: 1px solid ${(props) => props.theme.text};
-  border-radius: 8px;
-  padding: 1.5rem;
-`;
-
-const ToggleButton = styled.button`
-  padding: 0.75rem 1.5rem;
-  background-color: ${(props) => props.theme.text};
-  color: ${(props) => props.theme.background};
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
+import React, { useState } from "react";
+import { FaBell, FaPalette, FaGlobe } from "react-icons/fa";
 
 const Settings = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const token = localStorage.getItem("authToken"); // Match the token key used in your login/logout
-    if (!token) {
-      setLoading(false);
-      return;
-    }
-
-    const backendUrl = process.env.BACKEND_URL || "http://localhost:4000";
-    fetch(`${backendUrl}/api/user/profile`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch user data");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setUser(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
-  }, []);
+  const [notifications, setNotifications] = useState(true);
+  const [theme, setTheme] = useState("light");
+  const [language, setLanguage] = useState("English");
 
   return (
-    <PageWrapper theme={theme}>
-      <Header>
-        <Title>Settings</Title>
-        <SubTitle>Manage your account, notifications, and preferences</SubTitle>
-      </Header>
-      <SectionContainer>
-        <Card theme={theme}>
-          <h2>Account Details</h2>
-          {user ? (
-            <>
-              <p>
-                <strong>Name:</strong> {user.name}
-              </p>
-              <p>
-                <strong>Email:</strong> {user.email}
-              </p>
-            </>
-          ) : loading ? (
-            <p>Loading user data...</p>
-          ) : (
-            <p>No user data available. Please ensure you are logged in.</p>
-          )}
-        </Card>
-        <Card theme={theme}>
-          <h2>Theme Settings</h2>
-          <p>Current Theme: {theme === lightTheme ? "Light" : "Dark"}</p>
-          <ToggleButton theme={theme} onClick={toggleTheme}>
-            Toggle Theme
-          </ToggleButton>
-        </Card>
-      </SectionContainer>
-    </PageWrapper>
+    <div className="min-h-screen p-6 bg-gradient-to-b from-[#297194] via-[#D1E1F7] to-[#E7F2F7]">
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Settings</h2>
+
+      <div className="max-w-2xl mx-auto bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
+        {/* Notification Preferences */}
+        <div className="flex items-center justify-between border-b pb-4 mb-4">
+          <div className="flex items-center space-x-3">
+            <FaBell className="text-blue-500 text-xl" />
+            <p className="text-lg font-semibold text-gray-700">Notifications</p>
+          </div>
+          <button
+            onClick={() => setNotifications(!notifications)}
+            className={`px-4 py-1 rounded-full font-medium text-white transition duration-300 ${notifications ? 'bg-green-500' : 'bg-red-500'}`}
+          >
+            {notifications ? "Enabled" : "Disabled"}
+          </button>
+        </div>
+
+        {/* Theme Selection */}
+        <div className="flex items-center justify-between border-b pb-4 mb-4">
+          <div className="flex items-center space-x-3">
+            <FaPalette className="text-purple-500 text-xl" />
+            <p className="text-lg font-semibold text-gray-700">Theme</p>
+          </div>
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            className="px-3 py-1 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+
+        {/* Language Selection */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <FaGlobe className="text-green-500 text-xl" />
+            <p className="text-lg font-semibold text-gray-700">Language</p>
+          </div>
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="px-3 py-1 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="French">French</option>
+          </select>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -23,7 +23,7 @@ const OrbitingSymbols = () => {
         {orbitingSymbols.map((symbol) => (
           <motion.div
             key={symbol.id}
-            className="absolute text-blue-300 font-bold"
+            className="absolute text-blue-800 font-bold"
             style={{
               width: `${symbol.size}px`,
               height: `${symbol.size}px`,
@@ -60,7 +60,7 @@ const OrbitingSymbols = () => {
             ease: "easeInOut",
           }}
         >
-          <Brain size={240} className="text-blue-200" strokeWidth={1} />
+          <Brain size={240} className="text-blue-300" strokeWidth={1} />
         </motion.div>
       </div>
     </div>
