@@ -12,9 +12,12 @@ const Home = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  const handleGetStarted = () => {
-    navigate(token ? "/dashboard" : "/login");
-  };
+ 
+    const handleGetStarted = () => {
+      navigate("/login"); 
+    };
+    
+  
 
   const stars = useMemo(() => [...Array(40)].map((_, i) => ({
     id: `star-${i}`,

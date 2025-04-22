@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Bar } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import { FaUserEdit, FaBrain, FaSmile, FaExclamationTriangle } from "react-icons/fa";
+
 
 Chart.register(...registerables);
 
@@ -28,25 +28,7 @@ const heatmapData = {
   ],
 };
 
-const Flowchart = () => (
-  <div className="flex flex-col items-center space-y-4">
-    <div className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md text-sm">
-      <FaUserEdit className="mr-2" /> User Input
-    </div>
-    <div className="w-1 h-4 bg-black"></div>
-    <div className="flex items-center bg-teal-500 text-white px-4 py-2 rounded-lg shadow-md text-sm">
-      <FaBrain className="mr-2" /> NLP Analysis
-    </div>
-    <div className="w-1 h-4 bg-black"></div>
-    <div className="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-md text-sm">
-      <FaSmile className="mr-2" /> Emotion Detection
-    </div>
-    <div className="w-1 h-4 bg-black"></div>
-    <div className="flex items-center bg-red-500 text-white px-4 py-2 rounded-lg shadow-md text-sm">
-      <FaExclamationTriangle className="mr-2" /> Risk Prediction
-    </div>
-  </div>
-);
+
 
 const AIInsights = () => {
   return (
@@ -78,7 +60,7 @@ const AIInsights = () => {
       </motion.div>
 
       {/* Emotion Heatmap */}
-      <motion.div className="bg-white bg-opacity-80 rounded-lg shadow-lg p-5 text-center mb-8"
+      <motion.div className="bg-white bg-opacity-80 rounded-lg shadow-lg p-6 text-center mb-8"
         whileHover={{ scale: 1.03 }}
       >
         <h3 className="text-xl font-semibold mb-3 text-[#297194]">Emotion Heatmap</h3>
@@ -88,14 +70,7 @@ const AIInsights = () => {
         </div>
       </motion.div>
 
-      {/* AI Decision Flowchart */}
-      <motion.div className="bg-white bg-opacity-80 rounded-lg shadow-lg p-5 text-center"
-        whileHover={{ scale: 1.03 }}
-      >
-        <h3 className="text-xl font-semibold mb-3 text-[#297194]">AI Decision Flowchart</h3>
-        <p className="text-gray-600 mb-3 text-sm">How AI determines mental health insights.</p>
-        <Flowchart />
-      </motion.div>
+    
     </div>
   );
 };
