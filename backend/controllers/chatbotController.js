@@ -1,15 +1,27 @@
 import Conversation from "../models/conversationModel.js";
-
+import mongoose from 'mongoose';
+import moment from 'moment'; 
 const getChatbotResults = async (req, res) => {
   try {
     const userId = req.userId;
 
-    const latestConversation = await Conversation.findOne({ userId }).sort({ createdAt: -1 });
+    // Use aggregation to get the most recent conversation based on the latest message timestamp
+    const latestConvoAgg = await Conversation.aggregate([
+      { $match: { userId: new mongoose.Types.ObjectId(userId) } },
+      {
+        $addFields: {
+          latestMessageTime: { $max: "$messages.createdAt" }
+        }
+      },
+      { $sort: { latestMessageTime: -1 } },
+      { $limit: 1 }
+    ]);
 
-    if (!latestConversation || !latestConversation.messages || latestConversation.messages.length < 2) {
+    if (!latestConvoAgg.length || latestConvoAgg[0].messages.length < 2) {
       return res.status(404).json({ message: "No valid conversation found with at least 2 messages" });
     }
 
+    const latestConversation = latestConvoAgg[0];
     const assistantMessage = latestConversation.messages.find(msg => msg.role === "assistant");
 
     if (!assistantMessage || !assistantMessage.content) {
@@ -56,6 +68,8 @@ const getChatbotResults = async (req, res) => {
     res.status(500).json({ message: "Server error fetching chatbot results. Please try again later." });
   }
 };
+
+
 
 const getChatbotInsights = async (req, res) => {
   try {
@@ -165,10 +179,53 @@ const getChatbotVisualInsights = async (req, res) => {
   }
 };
 
+const getWordCloudData = async (req, res) => {
+  try {
+    const userId = req.userId;
+
+    // Get user's conversations sorted by latest
+    const conversations = await Conversation.find({ userId }).sort({ createdAt: -1 });
+
+    const wordsWithWeights = [];
+
+    for (const convo of conversations) {
+      const assistantMessages = convo.messages.filter((msg) => msg.role === "assistant");
+
+      for (const msg of assistantMessages) {
+        const content = msg.content;
+
+        const explanationMatch = content.match(/Explanation: The model's prediction is influenced by the following factors: (.+?)\./);
+
+        if (explanationMatch) {
+          const explanationContent = explanationMatch[1];
+          const wordWeightRegex = /"([^"]+)" contributes with a weight of (-?\d+\.\d+)/g;
+          let match;
+
+          while ((match = wordWeightRegex.exec(explanationContent)) !== null) {
+            wordsWithWeights.push({
+              text: match[1],
+              value: Math.abs(parseFloat(match[2])),
+            });
+          }
+        }
+      }
+    }
+
+    res.status(200).json({ words: wordsWithWeights });
+  } catch (error) {
+    console.error("Error fetching weighted word data:", error);
+    res.status(500).json({ message: "Server error fetching word cloud data." });
+  }
+};
+
+
+
+
 const getUserTrends = async (req, res) => {
   try {
     const userId = req.userId;
 
+    // Get all conversations for the user
     const userConversations = await Conversation.find({ userId }).sort({ createdAt: 1 });
 
     const trendData = userConversations
@@ -182,7 +239,7 @@ const getUserTrends = async (req, res) => {
         const riskMatch = content.match(/Risk Level: (\w+)/);
 
         return {
-          date: convo.createdAt,
+          date: convo.createdAt.toISOString().split('T')[0],
           sentiment: sentimentMatch?.[1] || "Unknown",
           sentiment_confidence: parseFloat(sentimentMatch?.[2] || "0"),
           disorder: disorderMatch?.[1] || "Unknown",
@@ -262,7 +319,25 @@ const getUserRiskAlerts = async (req, res) => {
   }
 };
 
+const getAllUserChatbotReports = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const conversations = await Conversation.find({ userId }).sort({ createdAt: -1 });
+
+    const reports = conversations
+      .map((conv) => ({
+        createdAt: conv.createdAt,
+        messages: conv.messages,
+      }))
+      .filter(Boolean);
+
+    res.status(200).json({ reports });
+  } catch (err) {
+    console.error("❌ Error fetching reports:", err);
+    res.status(500).json({ message: "Failed to fetch reports" });
+  }
+};
 
 
 
-export { getChatbotResults, getChatbotInsights,getChatbotVisualInsights,getUserTrends,getRiskAnalysis,getUserRiskAlerts };
+export { getChatbotResults, getChatbotInsights,getChatbotVisualInsights,getUserTrends,getRiskAnalysis,getUserRiskAlerts ,getWordCloudData,getAllUserChatbotReports};

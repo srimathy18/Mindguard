@@ -49,7 +49,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`transition-all duration-300 h-screen ${isSidebarOpen ? "w-64" : "w-20"} bg-gray-800 text-gray-100 flex flex-col`}
+      className={` transition-all duration-300 h-screen ${isSidebarOpen ? "w-64" : "w-20"} bg-gray-800 text-gray-100 flex flex-col`}
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4">

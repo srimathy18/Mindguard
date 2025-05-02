@@ -5,6 +5,7 @@ import connectDB from './config/mongodb.js';
 import userRouter from './routes/userRoutes.js';
 import conversationRoutes from './routes/conversationRoutes.js'
 import chatbotRoutes from './routes/chatbotRoutes.js';
+import selfAssessmentRoutes from './routes/selfAssessmentRoutes.js'
 
 dotenv.config(); 
 
@@ -20,6 +21,8 @@ const startServer = async () => {
   app.use('/api/auth', userRouter);
   app.use("/api/conversations", conversationRoutes);
   app.use("/api/chatbot", chatbotRoutes);
+  app.use('/api', selfAssessmentRoutes);
+  
   
   app.get('/', (req, res) => res.send("API Working"));
 

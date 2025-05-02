@@ -17,8 +17,8 @@ const userAuth = async (req, res, next) => {
       return res.status(401).json({ success: false, message: 'Not Authorized. Invalid Token.' });
     }
 
-    req.userId = decoded.id; // Store userId in req.userId
-    req.user = decoded; // Store entire decoded token in req.user for full access
+    req.userId = decoded.id; 
+    req.user = decoded; 
     next();
   } catch (error) {
     console.error("Auth Middleware Error:", error.message);

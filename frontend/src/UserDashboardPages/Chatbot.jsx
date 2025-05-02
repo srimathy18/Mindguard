@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { FaPaperPlane, FaArrowLeft } from "react-icons/fa";
+import {
+  FaPaperPlane,
+  FaArrowLeft,
+  FaBrain,
+  FaHeartbeat,
+  FaExclamationTriangle,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Chatbot = () => {
   const navigate = useNavigate();
@@ -19,35 +26,24 @@ const Chatbot = () => {
     setLoading(true);
 
     try {
-      // 1. Send to Flask API for analysis
       const response = await fetch("http://localhost:8000/analyze", {
         method: "POST",
-        headers: { 
-          "Content-Type": "application/json"  // Change the header to 'application/json'
+        headers: {
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: input })  // Change the body to a JSON object
+        body: JSON.stringify({ text: input }),
       });
 
       const data = await response.json();
 
-      // 2. Create bot message (matches schema)
       const botMessage = {
         role: "assistant",
-        content: `
-🧠 Sentiment: ${data.sentiment} (${Math.round(data.sentiment_confidence)}%)
-📋 Disorder: ${data.disorder} (${Math.round(data.disorder_confidence)}%)
-🚨 Risk Level: ${data.risk} 
-🔍 Explanation: ${data.lime_explanation}
-
-💡 Suggestions:
-${data.recommendations.map((s, i) => `  ${i + 1}. ${s}`).join("\n")}
-        `.trim(),
+        content: data,
       };
 
       const allMessages = [...updatedMessages, botMessage];
       setMessages(allMessages);
 
-      // 3. Save conversation to MongoDB backend
       await fetch("http://localhost:4000/api/conversations", {
         method: "POST",
         headers: {
@@ -61,7 +57,66 @@ ${data.recommendations.map((s, i) => `  ${i + 1}. ${s}`).join("\n")}
     } finally {
       setLoading(false);
     }
-};
+  };
+
+  const renderAssistantMessage = (data) => (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="bg-white p-4 rounded-lg shadow-md max-w-md"
+    >
+      <div className="space-y-3 text-sm text-gray-800">
+        {/* Sentiment */}
+        <div className="flex items-center space-x-2">
+          <div className="bg-blue-600 text-white p-2 rounded-full">
+            <FaBrain />
+          </div>
+          <div>
+            <strong>Sentiment:</strong>{" "}
+            {data.sentiment} ({Math.round(data.sentiment_confidence)}%)
+          </div>
+        </div>
+
+        {/* Disorder */}
+        <div className="flex items-center space-x-2">
+          <div className="bg-purple-600 text-white p-2 rounded-full">
+            <FaHeartbeat />
+          </div>
+          <div>
+            <strong>Disorder:</strong>{" "}
+            {data.disorder} ({Math.round(data.disorder_confidence)}%)
+          </div>
+        </div>
+
+        {/* Risk */}
+        <div className="flex items-center space-x-2">
+          <div className="bg-yellow-500 text-white p-2 rounded-full">
+            <FaExclamationTriangle />
+          </div>
+          <div>
+            <strong>Risk Level:</strong> {data.risk}%
+          </div>
+        </div>
+
+        {/* Explanation */}
+        <div className="bg-yellow-100 p-3 rounded-md">
+          <strong>Explanation:</strong>
+          <p className="text-xs mt-1">{data.lime_explanation}</p>
+        </div>
+
+        {/* Suggestions */}
+        <div className="bg-green-100 p-3 rounded-md">
+          <strong>Suggestions:</strong>
+          <ul className="list-disc list-inside text-xs mt-1">
+            {data.recommendations.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
+  );
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
@@ -71,24 +126,26 @@ ${data.recommendations.map((s, i) => `  ${i + 1}. ${s}`).join("\n")}
         <h2 className="text-lg font-semibold ml-4">AI Chatbot</h2>
       </div>
 
-      {/* Chat window */}
+      {/* Chat Window */}
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`p-3 rounded-lg whitespace-pre-wrap max-w-md ${
+            className={`${
               msg.role === "user"
                 ? "bg-blue-500 text-white ml-auto"
-                : "bg-white text-black shadow"
-            }`}
+                : "bg-transparent text-black"
+            } p-3 rounded-lg max-w-md`}
           >
-            {msg.content}
+            {msg.role === "assistant"
+              ? renderAssistantMessage(msg.content)
+              : msg.content}
           </div>
         ))}
         {loading && <p className="text-gray-500">AI is typing...</p>}
       </div>
 
-      {/* Input section */}
+      {/* Input Section */}
       <div className="p-4 bg-white shadow flex">
         <input
           type="text"
