@@ -3,7 +3,6 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-
 import { FaRobot } from "react-icons/fa"; // Chatbot icon
 import Sidebar from "../UserDashboardPages/Sidebar";
 import WellnessOverview from "../UserDashboardPages/WellnessOverview";
-import AIInsights from "../UserDashboardPages/AIInsights";
 import Resources from "../UserDashboardPages/Resourses";
 import RiskAlerts from "../UserDashboardPages/RiskAlerts";
 import Suggestions from "../UserDashboardPages/Suggestions";
@@ -13,6 +12,7 @@ import Settings from "../UserDashboardPages/Settings";
 import Community from "../UserDashboardPages/Community";
 import Chatbot from "../UserDashboardPages/Chatbot"; 
 import { PiChatCircleDotsFill } from "react-icons/pi";
+import ReportsPage from "../UserDashboardPages/ReportsPage";
 
 
 const UserDashboard = () => {
@@ -35,7 +35,6 @@ const UserDashboard = () => {
                 
                   <Routes>
                     <Route path="wellness-overview" element={<WellnessOverview />} />
-                    <Route path="ai-insights" element={<AIInsights />} />
                     <Route path="resources" element={<Resources />} />
                     <Route path="risk-alerts" element={<RiskAlerts />} />
                     <Route path="suggestions" element={<Suggestions />} />
@@ -43,6 +42,7 @@ const UserDashboard = () => {
                     <Route path="self-assessment" element={<SelfAssessment />} />
                     <Route path="settings" element={<Settings />} />
                     <Route path="community" element={<Community />} />
+                    <Route path="reports" element={<ReportsPage/>} />
                     <Route path="chatbot" element={<Chatbot />} />
                     <Route index element={<WellnessOverview />} />
                   </Routes>

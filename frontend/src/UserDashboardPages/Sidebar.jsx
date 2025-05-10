@@ -37,7 +37,6 @@ const Sidebar = () => {
 
   const menuItems = [
     { title: "Wellness Overview", icon: <UserCheck size={20} />, path: "/dashboard/wellness-overview" },
-    { title: "AI Insights", icon: <Brain size={20} />, path: "/dashboard/ai-insights" },
     { title: "Resources", icon: <Star size={20} />, path: "/dashboard/resources" },
     { title: "Risk Alerts", icon: <Bell size={20} />, path: "/dashboard/risk-alerts" },
     { title: "Suggestions", icon: <ClipboardList size={20} />, path: "/dashboard/suggestions" },
@@ -48,42 +47,39 @@ const Sidebar = () => {
   ];
 
   return (
-    <div
-      className={` transition-all duration-300 h-screen ${isSidebarOpen ? "w-64" : "w-20"} bg-gray-800 text-gray-100 flex flex-col`}
-    >
-      {/* Header */}
-      <div className="flex items-center justify-between p-4">
-        <button
-          onClick={toggleSidebar}
-          className="p-2 rounded-md hover:bg-gray-700 focus:outline-none"
-        >
-          <Menu size={24} />
-        </button>
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar */}
+      <div
+        className={`${isSidebarOpen ? "w-64" : "w-20"} bg-gray-800 text-white transition-all duration-300 fixed h-full`}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-700">
+          {isSidebarOpen && <h1 className="text-xl font-bold">Minguard</h1>}
+          <button onClick={toggleSidebar} className="p-1 rounded-lg hover:bg-gray-700">
+            <Menu size={24} />
+          </button>
+        </div>
+
+        {/* Navigation Items */}
+        <div className="flex flex-col p-2 space-y-2 mt-4">
+          {menuItems.map((item) => (
+            <Link
+              to={item.path}
+              key={item.title}
+              className="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors"
+            >
+              <span className="mr-3">{item.icon}</span>
+              {isSidebarOpen && <span>{item.title}</span>}
+            </Link>
+          ))}
+        </div>
+
+       
       </div>
 
-      {/* Navigation Items */}
-      <nav className="flex-1 px-4 space-y-2">
-        {menuItems.map((item) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className="flex items-center p-2 rounded-md hover:bg-gray-700"
-          >
-            <span>{item.icon}</span>
-            {isSidebarOpen && <span className="ml-4">{item.title}</span>}
-          </Link>
-        ))}
-      </nav>
-
-      {/* Always Visible Logout Button */}
-      <div className="p-4 mt-auto">
-        <button
-          onClick={handleLogout}
-          className="flex items-center w-full p-2 rounded-md hover:bg-gray-700"
-        >
-          <LogOut size={20} />
-          {isSidebarOpen && <span className="ml-4">Logout</span>}
-        </button>
+      {/* Content Area - This should be rendered by your layout component */}
+      <div className={`flex-1 overflow-auto ${isSidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}>
+        {/* Your main content will go here */}
       </div>
     </div>
   );

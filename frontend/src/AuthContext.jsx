@@ -1,39 +1,56 @@
-// src/AuthContext.jsx
 import React, { createContext, useState, useEffect, useContext } from "react";
-
+import { jwtDecode } from "jwt-decode"; // ✅ Correct import for Vite
 
 const AuthContext = createContext();
-
 
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-//  provide the token globally
+// Provide the token globally
 export const AuthProvider = ({ children }) => {
- 
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
+      try {
+        const decoded = jwtDecode(storedToken);
+        setUserId(decoded.userId); // assuming your token includes userId
+      } catch (error) {
+        console.error("Failed to decode token", error);
+        localStorage.removeItem("token");
+        setToken(null);
+        setUserId(null);
+      }
     }
   }, []);
 
-  // Function to set the token and store it in localStorage
   const setTokenAndStore = (newToken) => {
     if (newToken) {
-      localStorage.setItem("token", newToken); 
+      localStorage.setItem("token", newToken);
+      setToken(newToken);
+      try {
+        const decoded = jwtDecode(newToken);
+        setUserId(decoded.userId);
+      } catch (error) {
+        console.error("Failed to decode new token", error);
+        setUserId(null);
+      }
     } else {
-      localStorage.removeItem("token"); 
+      localStorage.removeItem("token");
+      setToken(null);
+      setUserId(null);
     }
-    setToken(newToken); // Update state
   };
 
   return (
-    <AuthContext.Provider value={{ token, setToken: setTokenAndStore }}>
+    <AuthContext.Provider value={{ token, userId, setToken: setTokenAndStore }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+
