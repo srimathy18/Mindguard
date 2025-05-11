@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { jwtDecode } from "jwt-decode"; // ✅ Correct import for Vite
+import { jwtDecode } from "jwt-decode"; 
 
 const AuthContext = createContext();
 
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
       setToken(storedToken);
       try {
         const decoded = jwtDecode(storedToken);
-        setUserId(decoded.userId); // assuming your token includes userId
+        setUserId(decoded.userId); 
       } catch (error) {
         console.error("Failed to decode token", error);
         localStorage.removeItem("token");

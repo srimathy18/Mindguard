@@ -6,6 +6,7 @@ import {
   forgotPassword,
   getUserProfile,
   updateUserProfile,
+  resetPassword
 } from "../controllers/usercontroller.js";
 import userAuth from "../middlewares/auth.js"; // For protected routes
 
@@ -28,5 +29,8 @@ userRouter.get("/profile/:id", userAuth, getUserProfile);
 
 // Update User Profile: /api/auth/profile/:id
 userRouter.put("/profile/:id", userAuth, updateUserProfile);
+
+userRouter.put("/reset-password/:token", resetPassword);
+
 
 export default userRouter;

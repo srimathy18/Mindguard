@@ -156,7 +156,10 @@ const Community = () => {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sky-100 mb-4">
                     <Search className="text-blue-500" size={24} />
                   </div>
-                  <p className="text-gray-600 text-lg">No posts found. Try a different search term.</p>
+                  <p className="text-gray-600 text-lg">
+  Type a disorder name above to find related discussions on Reddit.
+</p>
+
                 </div>
               )}
             </div>

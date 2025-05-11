@@ -168,4 +168,31 @@ const updateUserProfile = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser, getDashboard, forgotPassword , getUserProfile, updateUserProfile};
+const resetPassword = async (req, res) => {
+  const { token } = req.params;
+  const { newPassword } = req.body;
+
+  if (!newPassword) {
+    return res.status(400).json({ message: "New password is required" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userModel.findById(decoded.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(newPassword, salt);
+    user.password = hashed;
+    await user.save();
+
+    res.status(200).json({ message: "Password has been reset successfully." });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: "Invalid or expired token" });
+  }
+};
+
+export { registerUser, loginUser, getDashboard, forgotPassword , getUserProfile,resetPassword, updateUserProfile};

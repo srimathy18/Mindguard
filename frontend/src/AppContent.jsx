@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import UserDashboard from "./pages/UserDashboard";
 import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword"; 
 import { useAuth } from "./AuthContext";
 import PrivateRoute from "./PrivateRoute";
 
@@ -16,7 +17,7 @@ import CopingStrategies from "./UserDashboardPages/CopingStrategies";
 import ChatbotSuggestionPage from "./UserDashboardPages/ChatbotSuggestionPage";
 
 const AppContent = () => {
-  const { user } = useAuth(); // Make sure AuthContext returns user object
+  const { user } = useAuth();
 
   return (
     <Routes>
@@ -25,8 +26,8 @@ const AppContent = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-      {/* ✅ Protected Dashboard */}
       <Route
         path="/dashboard/*"
         element={
@@ -36,14 +37,10 @@ const AppContent = () => {
         }
       />
 
-      {/* ✅ Additional Mental Health Tools */}
       <Route path="/breathing-exercise" element={<BreathingExercise />} />
       <Route path="/guided-meditation" element={<GuidedMeditation />} />
       <Route path="/coping-strategies" element={<CopingStrategies />} />
-      <Route
-        path="/chatbot-suggestions"
-        element={<ChatbotSuggestionPage userId={user?._id} />}
-      />
+      <Route path="/chatbot-suggestions" element={<ChatbotSuggestionPage userId={user?._id} />} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
@@ -51,4 +48,3 @@ const AppContent = () => {
 };
 
 export default AppContent;
-

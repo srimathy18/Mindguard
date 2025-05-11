@@ -29,18 +29,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try 10 minutes of deep breathing 🧘",
+          content1: "Find a quiet space and focus on slow, rhythmic breaths",
+          content2: "Helps reduce stress and promotes mental clarity",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Go for a 15-minute walk in nature 🏃",
+          content1: "Choose a peaceful path and observe your surroundings",
+          content2: "Boosts mood and increases vitamin D exposure",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Practice guided meditation 🔄",
+          content1: "Use a meditation app or online resource for guidance",
+          content2: "Enhances mindfulness and emotional balance",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
@@ -49,18 +55,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Write down 3 things you're grateful for 🧘",
+          content1: "Keep a gratitude journal by your bedside",
+          content2: "Shifts focus to positive aspects of life",
           image:
             "https://images.pexels.com/photos/3059748/pexels-photo-3059748.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do light stretching or yoga for 10 minutes 🏃",
+          content1: "Start with simple stretches and listen to your body",
+          content2: "Improves flexibility and reduces physical tension",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Listen to calming music 🔄",
+          content1: "Create a playlist of soothing instrumental tracks",
+          content2: "Reduces anxiety and promotes relaxation",
           image:
             "https://images.pexels.com/photos/4126743/pexels-photo-4126743.jpeg",
         },
@@ -69,18 +81,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Engage in a hobby you enjoy 🧘",
+          content1: "Set aside dedicated time for your favorite activity",
+          content2: "Provides a sense of accomplishment and joy",
           image:
             "https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Call a friend and have a short chat 🏃",
+          content1: "Schedule regular check-ins with loved ones",
+          content2: "Strengthens social connections and support",
           image:
             "https://images.pexels.com/photos/5793913/pexels-photo-5793913.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Do a short 5-minute mindfulness exercise 🔄",
+          content1: "Focus on your breath and present moment",
+          content2: "Reduces stress and improves concentration",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -91,18 +109,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try progressive muscle relaxation 🧘",
+          content1: "Tense and relax each muscle group systematically",
+          content2: "Releases physical tension and calms the mind",
           image:
             "https://images.pexels.com/photos/3759658/pexels-photo-3759658.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Use the 4-7-8 breathing technique 🏃",
+          content1: "Inhale for 4, hold for 7, exhale for 8 counts",
+          content2: "Activates the parasympathetic nervous system",
           image:
             "https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Write down your thoughts to clear your mind 🔄",
+          content1: "Use a journal to express worries and concerns",
+          content2: "Helps identify thought patterns and triggers",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -111,18 +135,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Listen to nature sounds or white noise 🧘",
+          content1: "Create a peaceful audio environment",
+          content2: "Masks distracting thoughts and sounds",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Take a 15-minute break from screens 🏃",
+          content1: "Focus on a non-digital activity",
+          content2: "Reduces eye strain and mental fatigue",
           image:
             "https://images.pexels.com/photos/4049990/pexels-photo-4049990.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Try a short visualization exercise 🔄",
+          content1: "Imagine a peaceful, safe place in detail",
+          content2: "Creates mental escape from anxiety",
           image:
             "https://images.pexels.com/photos/3822620/pexels-photo-3822620.jpeg",
         },
@@ -131,18 +161,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Practice slow, deep breathing for 5 minutes 🧘",
+          content1: "Count to 4 on inhale and exhale",
+          content2: "Stabilizes heart rate and blood pressure",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Drink herbal tea and relax 🏃",
+          content1: "Choose calming herbs like chamomile or lavender",
+          content2: "Promotes relaxation and mindful moments",
           image:
             "https://images.pexels.com/photos/5501104/pexels-photo-5501104.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Read a book for 10 minutes 🔄",
+          content1: "Choose light, enjoyable reading material",
+          content2: "Provides healthy escape and mental stimulation",
           image:
             "https://images.pexels.com/photos/5834/nature-grass-leaf-green.jpg",
         },
@@ -153,18 +189,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try a calming breathing exercise 🧘",
+          content1: "Practice box breathing: 4 counts each side",
+          content2: "Helps regulate emotional responses",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do some light walking or stretching 🏃",
+          content1: "Start with 5-10 minutes of gentle movement",
+          content2: "Stabilizes energy levels and mood",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Establish a calming bedtime routine 🔄",
+          content1: "Set consistent sleep and wake times",
+          content2: "Maintains circadian rhythm balance",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
@@ -173,18 +215,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Listen to relaxing music or sounds 🧘",
+          content1: "Choose slow-tempo, instrumental music",
+          content2: "Helps regulate mood and emotions",
           image:
             "https://images.pexels.com/photos/4126743/pexels-photo-4126743.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Take a 10-minute break and walk outside 🏃",
+          content1: "Focus on steady, rhythmic steps",
+          content2: "Provides natural light exposure and exercise",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Use a mood tracking app 🔄",
+          content1: "Record mood changes and triggers daily",
+          content2: "Helps identify patterns and warning signs",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -193,18 +241,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Engage in a hobby to distract your mind 🧘",
+          content1: "Choose activities that require focus",
+          content2: "Provides healthy outlet for energy",
           image:
             "https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do 10 minutes of gentle yoga 🏃",
+          content1: "Follow beginner-friendly poses",
+          content2: "Improves body awareness and balance",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Set a daily routine for self-care 🔄",
+          content1: "Create a schedule for basic activities",
+          content2: "Provides structure and stability",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -215,18 +269,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try deep breathing or mindfulness 🧘",
+          content1: "Focus on breath sensations without judgment",
+          content2: "Reduces anxiety and compulsive urges",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do a 5-minute grounding exercise 🏃",
+          content1: "Name 5 things you can see, hear, and feel",
+          content2: "Brings attention to present moment",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Use a journal to organize your thoughts 🔄",
+          content1: "Write down intrusive thoughts without acting",
+          content2: "Helps separate thoughts from actions",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -235,18 +295,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Engage in a guided relaxation session 🧘",
+          content1: "Follow along with audio guidance",
+          content2: "Provides structured relaxation practice",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Take a 10-minute walk outdoors 🏃",
+          content1: "Focus on the natural environment",
+          content2: "Changes scenery and perspective",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Practice positive affirmations 🔄",
+          content1: "Repeat calming statements regularly",
+          content2: "Builds confidence and resilience",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -255,18 +321,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Use calming essential oils 🧘",
+          content1: "Try lavender or chamomile scents",
+          content2: "Creates soothing sensory experience",
           image:
             "https://images.pexels.com/photos/3059748/pexels-photo-3059748.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do a 5-minute stretching routine 🏃",
+          content1: "Focus on gentle, flowing movements",
+          content2: "Releases physical tension patterns",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Set up a time to relax every day 🔄",
+          content1: "Schedule regular relaxation breaks",
+          content2: "Creates predictable calm periods",
           image:
             "https://images.pexels.com/photos/3822620/pexels-photo-3822620.jpeg",
         },
@@ -277,18 +349,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try progressive muscle relaxation 🧘",
+          content1: "Start from toes and work up to head",
+          content2: "Reduces physical stress responses",
           image:
             "https://images.pexels.com/photos/3759658/pexels-photo-3759658.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Go for a nature walk 🏃",
+          content1: "Choose familiar, safe environments",
+          content2: "Connects with present surroundings",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Start journaling your thoughts 🔄",
+          content1: "Write freely without self-judgment",
+          content2: "Processes experiences safely",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -297,18 +375,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Engage in deep breathing exercises 🧘",
+          content1: "Practice 4-7-8 breathing technique",
+          content2: "Calms nervous system activation",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do light stretching 🏃",
+          content1: "Move gently within comfort zone",
+          content2: "Increases body awareness safely",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Limit social media exposure 🔄",
+          content1: "Set specific times for media use",
+          content2: "Reduces potential triggers",
           image:
             "https://images.pexels.com/photos/4049990/pexels-photo-4049990.jpeg",
         },
@@ -317,18 +401,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Practice mindfulness 🧘",
+          content1: "Start with short, guided sessions",
+          content2: "Builds present-moment awareness",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Talk to a trusted friend 🏃",
+          content1: "Share comfortable level of detail",
+          content2: "Strengthens support network",
           image:
             "https://images.pexels.com/photos/5793913/pexels-photo-5793913.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Spend time with loved ones 🔄",
+          content1: "Plan simple, enjoyable activities",
+          content2: "Creates positive social experiences",
           image:
             "https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg",
         },
@@ -339,18 +429,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try guided breathing 🧘",
+          content1: "Follow simple breathing patterns",
+          content2: "Anchors attention to present",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Take short walks 🏃",
+          content1: "Walk in familiar, safe areas",
+          content2: "Provides gentle physical activity",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Stick to a strict routine 🔄",
+          content1: "Create detailed daily schedule",
+          content2: "Maintains structure and stability",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -359,18 +455,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Engage in a mindfulness session 🧘",
+          content1: "Use simple grounding techniques",
+          content2: "Helps distinguish reality",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Exercise for 10 minutes 🏃",
+          content1: "Choose low-impact movements",
+          content2: "Improves physical well-being",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Set daily goals 🔄",
+          content1: "Start with small, achievable tasks",
+          content2: "Builds confidence gradually",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -379,18 +481,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Practice slow breathing 🧘",
+          content1: "Count breaths to maintain focus",
+          content2: "Promotes mental clarity",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Join a social group 🏃",
+          content1: "Start with small group activities",
+          content2: "Builds social connections safely",
           image:
             "https://images.pexels.com/photos/5793913/pexels-photo-5793913.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Practice self-care daily 🔄",
+          content1: "Maintain basic hygiene routine",
+          content2: "Enhances personal well-being",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -401,18 +509,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try breathing exercises 🧘",
+          content1: "Use visual breathing guides",
+          content2: "Improves focus and calm",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Go for a brisk walk 🏃",
+          content1: "Set a specific route and time",
+          content2: "Releases excess energy",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Use a planner to organize your day 🔄",
+          content1: "Break tasks into small steps",
+          content2: "Reduces overwhelm and forgetfulness",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -421,18 +535,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Use relaxation apps 🧘",
+          content1: "Try apps with interactive features",
+          content2: "Provides structured guidance",
           image:
             "https://images.pexels.com/photos/4049990/pexels-photo-4049990.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Take a short break every hour 🏃",
+          content1: "Set reminders for movement breaks",
+          content2: "Maintains focus and energy",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Break tasks into smaller steps 🔄",
+          content1: "Use checklists for each task",
+          content2: "Makes progress more visible",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -441,18 +561,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Practice meditation 🧘",
+          content1: "Start with 2-minute sessions",
+          content2: "Builds attention span gradually",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do yoga 🏃",
+          content1: "Choose dynamic flowing sequences",
+          content2: "Combines movement and mindfulness",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Use timers for task management 🔄",
+          content1: "Set specific time blocks for tasks",
+          content2: "Improves time awareness",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -463,18 +589,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Practice deep breathing 🧘",
+          content1: "Use the 5-5-5 breathing technique",
+          content2: "Stabilizes emotional responses",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Go for a jog 🏃",
+          content1: "Start with alternating walk/jog",
+          content2: "Releases emotional tension",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Write your emotions in a journal 🔄",
+          content1: "Track emotions and triggers daily",
+          content2: "Identifies patterns and needs",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -483,18 +615,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try guided imagery 🧘",
+          content1: "Create a safe mental space",
+          content2: "Provides emotional refuge",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Take a break to clear your mind 🏃",
+          content1: "Change environment briefly",
+          content2: "Interrupts intense emotions",
           image:
             "https://images.pexels.com/photos/4049990/pexels-photo-4049990.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Limit caffeine intake 🔄",
+          content1: "Switch to herbal alternatives",
+          content2: "Reduces emotional volatility",
           image:
             "https://images.pexels.com/photos/5501104/pexels-photo-5501104.jpeg",
         },
@@ -503,18 +641,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Use aromatherapy 🧘",
+          content1: "Choose calming essential oils",
+          content2: "Creates soothing environment",
           image:
             "https://images.pexels.com/photos/3059748/pexels-photo-3059748.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Engage in gentle stretching 🏃",
+          content1: "Focus on body sensations",
+          content2: "Increases body awareness",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Talk to someone you trust 🔄",
+          content1: "Schedule regular check-ins",
+          content2: "Maintains support system",
           image:
             "https://images.pexels.com/photos/5793913/pexels-photo-5793913.jpeg",
         },
@@ -525,18 +669,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Try guided meditation 🧘",
+          content1: "Focus on self-compassion",
+          content2: "Builds positive self-image",
           image:
             "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Engage in mindful walking 🏃",
+          content1: "Notice surroundings mindfully",
+          content2: "Connects mind and body",
           image:
             "https://images.pexels.com/photos/1448055/pexels-photo-1448055.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Use positive affirmations 🔄",
+          content1: "Practice self-acceptance statements",
+          content2: "Strengthens self-worth",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -545,18 +695,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Practice mindful eating 🧘",
+          content1: "Eat slowly and mindfully",
+          content2: "Develops healthy relationship with food",
           image:
             "https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Go for a walk with a friend 🏃",
+          content1: "Focus on conversation and connection",
+          content2: "Provides social support",
           image:
             "https://images.pexels.com/photos/5793913/pexels-photo-5793913.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Journal about your day 🔄",
+          content1: "Write about feelings and experiences",
+          content2: "Processes emotions safely",
           image:
             "https://images.pexels.com/photos/3059747/pexels-photo-3059747.jpeg",
         },
@@ -565,18 +721,24 @@ function ChatbotSuggestionPage() {
         {
           type: "Relaxation",
           suggestion: "Listen to calming music 🧘",
+          content1: "Create a peaceful playlist",
+          content2: "Soothes anxiety and stress",
           image:
             "https://images.pexels.com/photos/4126743/pexels-photo-4126743.jpeg",
         },
         {
           type: "Activity",
           suggestion: "Do gentle stretching 🏃",
+          content1: "Move with kindness to body",
+          content2: "Promotes body acceptance",
           image:
             "https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg",
         },
         {
           type: "Habit",
           suggestion: "Practice self-compassion daily 🔄",
+          content1: "Treat yourself with kindness",
+          content2: "Builds resilience and self-worth",
           image:
             "https://images.pexels.com/photos/3822711/pexels-photo-3822711.jpeg",
         },
@@ -986,6 +1148,13 @@ function ChatbotSuggestionPage() {
                           {suggestion.suggestion}
                         </h4>
 
+                        <div className="text-sm text-gray-600 mb-2">
+                          • {suggestion.content1}
+                        </div>
+                        <div className="text-sm text-gray-600 mb-3">
+                          • {suggestion.content2}
+                        </div>
+
                         <div className="absolute -left-2 -top-1 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-1">
                           <div className="relative">
                             <Sparkles className="h-6 w-6 text-yellow-500 animate-float absolute" />
@@ -1248,5 +1417,4 @@ function ChatbotSuggestionPage() {
 }
 
 export default ChatbotSuggestionPage;
-
 
