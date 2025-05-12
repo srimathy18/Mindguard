@@ -33,42 +33,44 @@ const ResetPassword = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <motion.div
-        className="relative bg-white p-8 rounded-md shadow-md w-full max-w-md"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* Close icon */}
+      <div className="relative w-full max-w-md">
+       
         <img
           src="/cross_icon.svg"
           alt="Close"
-          className="w-6 h-6 absolute top-4 right-4 cursor-pointer"
+          className="w-6 h-6 absolute top-4 right-4 cursor-pointer z-50"
           onClick={() => navigate("/")}
         />
 
-        <h2 className="text-2xl font-semibold mb-4 text-center">🔐 Reset Password</h2>
-        {message && <p className="text-green-600 text-center mb-3">{message}</p>}
-        {error && <p className="text-red-600 text-center mb-3">{error}</p>}
-        <form onSubmit={handleReset}>
-          <label className="block mb-2 font-medium">New Password</label>
-          <input
-            type="password"
-            className="w-full p-3 border rounded-md mb-4"
-            placeholder="Enter new password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-          >
-            {loading ? "Resetting..." : "Reset Password"}
-          </button>
-        </form>
-      </motion.div>
+        <motion.div
+          className="bg-white p-8 rounded-md shadow-md"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-2xl font-semibold mb-4 text-center">🔐 Reset Password</h2>
+          {message && <p className="text-green-600 text-center mb-3">{message}</p>}
+          {error && <p className="text-red-600 text-center mb-3">{error}</p>}
+          <form onSubmit={handleReset}>
+            <label className="block mb-2 font-medium">New Password</label>
+            <input
+              type="password"
+              className="w-full p-3 border rounded-md mb-4"
+              placeholder="Enter new password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+            >
+              {loading ? "Resetting..." : "Reset Password"}
+            </button>
+          </form>
+        </motion.div>
+      </div>
     </div>
   );
 };
