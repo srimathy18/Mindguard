@@ -2,12 +2,18 @@ import { motion } from "framer-motion";
 
 const ShieldIndicator = ({ level, label }) => {
   const styles = {
-    Low: { bgColor: "green", icon: "✔️" },
-    Medium: { bgColor: "orange", icon: "⚠️" },
-    High: { bgColor: "red", icon: "❌" },
+    low: { bgColor: "green", icon: "✔️" },
+    medium: { bgColor: "orange", icon: "⚠️" },
+    high: { bgColor: "red", icon: "❌" },
   };
 
-  const currentStyle = styles[level] || styles.Low;
+  // Normalize the level prop
+  const normalizedLevel =
+    typeof level === "string" ? level.toLowerCase() : "low";
+
+  
+
+  const currentStyle = styles[normalizedLevel] || styles.low;
 
   return (
     <motion.div

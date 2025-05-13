@@ -59,7 +59,7 @@ create_database()
 
 class MentalHealthChatbot:
     def __init__(self):
-        self.sentiment_client = Client("hasanmustafa0503/sentiment-api")
+        self.sentiment_client = Client("hasanmustafa0503/sentiment")
         self.disorder_client = Client("hasanmustafa0503/disoreder-api")
 
         # Label mappings

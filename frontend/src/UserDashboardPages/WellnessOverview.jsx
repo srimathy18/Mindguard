@@ -60,6 +60,15 @@ const WellnessOverview = () => {
     return "High";
   };
 
+  // Function to map risk level to Low, Medium, or High
+  const mapRiskToLevel = (risk) => {
+    if (!risk) return "Low";
+    const normalized = risk.toLowerCase();
+    if (normalized === "high") return "high"; // Ensure it returns lowercase "high"
+    if (normalized === "medium") return "medium"; // Ensure it returns lowercase "medium"
+    return "low"; // Default to "low"
+  };
+
   const cardBase =
     "bg-white/40 backdrop-blur-md rounded-3xl shadow-xl p-8 text-center border border-white/30 hover:shadow-gray-600/40 hover:ring-2 hover:ring-gray-500/40 transition-all duration-300";
 
@@ -106,7 +115,10 @@ const WellnessOverview = () => {
             <FaExclamationTriangle className="text-3xl text-[#F59E0B]" />
           </div>
           <h3 className="text-xl font-semibold text-gray-800 mb-4">Risk Level</h3>
-          <ShieldIndicator level={overviewData.risk} label={overviewData.risk} />
+          <ShieldIndicator
+            level={mapRiskToLevel(overviewData.risk)}  
+            label={overviewData.risk}
+          />
         </motion.div>
       </div>
 

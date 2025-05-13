@@ -1,33 +1,49 @@
 import Conversation from "../models/conversationModel.js";
 
-// Create new conversation entry
 export const createConversation = async (req, res) => {
   try {
     const { messages } = req.body;
-    const userId = req.userId; // from auth middleware
+    const userId = req.userId;
 
     if (!messages || messages.length === 0) {
       return res.status(400).json({ message: "Messages are required" });
     }
 
-    // Ensure all message contents are strings
-    const cleanedMessages = messages.map(msg => ({
-      role: msg.role,
-      content: typeof msg.content === 'object' ? JSON.stringify(msg.content) : msg.content
-    }));
+    // Format messages
+    const cleanedMessages = messages.map(msg => {
+      if (msg.role === 'assistant' && typeof msg.content === 'object') {
+        const data = msg.content;
 
-    const conversation = new Conversation({
-      userId,
-      messages: cleanedMessages,
+        // Structure to your required format
+        return {
+          role: msg.role,
+          content: {
+            sentiment_confidence: data.sentiment_confidence || null,
+            disorder_confidence: data.disorder_confidence || null,
+            risk_level: data.risk || null,
+            explanation: data.lime_explanation || null,
+            suggestions: data.recommendations || [],
+            risk_alert: data.alert_message || null
+          }
+        };
+      }
+
+      return {
+        role: msg.role,
+        content: typeof msg.content === 'object' ? JSON.stringify(msg.content) : msg.content
+      };
     });
 
-    const saved = await conversation.save();
-    res.status(201).json(saved);
+    const newConversation = new Conversation({ userId, messages: cleanedMessages });
+    await newConversation.save();
+
+    res.status(201).json(newConversation);
   } catch (error) {
-    console.error("❌ Error saving conversation:", error);
-    res.status(500).json({ message: "Server error while saving conversation" });
+    console.error("Error saving conversation:", error);
+    res.status(500).json({ message: "Something went wrong" });
   }
 };
+
 
 // Get all conversations for a user
 export const getUserConversations = async (req, res) => {
