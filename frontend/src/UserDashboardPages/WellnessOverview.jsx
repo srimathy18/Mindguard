@@ -64,8 +64,8 @@ const WellnessOverview = () => {
   const mapRiskToLevel = (risk) => {
     if (!risk) return "Low";
     const normalized = risk.toLowerCase();
-    if (normalized === "high") return "high"; // Ensure it returns lowercase "high"
-    if (normalized === "medium") return "medium"; // Ensure it returns lowercase "medium"
+    if (normalized === "high") return "high"; 
+    if (normalized === "medium") return "medium"; 
     return "low"; // Default to "low"
   };
 

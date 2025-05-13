@@ -36,11 +36,11 @@ const parseLegacyTextContent = (text) => {
     disorder_confidence: parseFloat(disorderMatch?.[2] || "0"),
     risk: normalizeRiskLevel(riskMatch?.[1] || "Low"),
     recommendation,
-    alert_message: null, // Legacy format did not have alert messages
+    alert_message: null, 
   };
 };
 
-// Controller to get chatbot results (sentiment, disorder, risk, etc.)
+// Controller to get chatbot results 
 const getChatbotResults = async (req, res) => {
   try {
     const userId = req.userId;
@@ -72,7 +72,7 @@ const getChatbotResults = async (req, res) => {
     const rawContent = normalizeContent(assistantMessage.content);
     const parsedContent = typeof rawContent === 'string' ? JSON.parse(rawContent) : rawContent;
 
-    // Prepare and format response for chatbot results
+    //  format response for chatbot results
     const formattedResponse = {
       sentiment: parsedContent.sentiment ?? "Unknown",
       sentiment_confidence: parsedContent.sentiment_confidence ?? 0,

@@ -54,7 +54,7 @@ const Sidebar = () => {
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          {isSidebarOpen && <h1 className="text-xl font-bold">Minguard</h1>}
+          {isSidebarOpen && <h1 className="text-xl font-bold">Mindguard</h1>}
           <button onClick={toggleSidebar} className="p-1 rounded-lg hover:bg-gray-700">
             <Menu size={24} />
           </button>
